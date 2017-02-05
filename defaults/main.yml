@@ -1,0 +1,16 @@
+---
+
+vector_user: _vector
+vector_userdir: /var/_vector
+vector_root: /var/_vector/vector
+#vector_version: HEAD
+vector_version: v1.1.1
+
+## local build or not?
+#vector_origin: 'src'
+vector_origin: 'archive'
+
+vector_server: 'nginx'
+#vector_server: 'apache2'
+#vector_server: 'gulp'
+

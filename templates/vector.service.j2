@@ -1,0 +1,12 @@
+[Unit]
+Description=Vector Web monitoring console
+After=network.target
+
+[Service]
+ExecStart=gulp serve
+Restart=always
+User={{ vector_user }}
+Group={{ vector_user }}
+Environment=PATH=/usr/bin:/usr/local/bin
+WorkingDirectory={{ vector_root }
+

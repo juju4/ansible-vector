@@ -1,0 +1,18 @@
+---
+
+- name: ensure vector_root dist dir exists
+  file: dest={{ vector_root }}/dist state=directory mode=0755
+
+- name: download vector distribution archive
+  get_url:
+#    url: "https://dl.bintray.com/netflixoss/downloads/{{ vector_version | regex_replace('^v', '') }}/vector.tar.gz"
+    url: "https://dl.bintray.com/netflixoss/downloads/1.1.0/vector.tar.gz"
+    dest: "{{ vector_root }}/vector.tar.gz"
+    checksum: "sha256:ff5a126b6d106c9f2d6e886f4a87a8708933dc997091ad13f3a7f1e65ebed5e2"
+
+- name: unarchive vector
+  unarchive:
+    src: "{{ vector_root }}/vector.tar.gz"
+    dest: "{{ vector_root }}/dist"
+
+

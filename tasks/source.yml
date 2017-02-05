@@ -1,0 +1,35 @@
+---
+
+- name: install dependencies packages
+  package: name={{ item }} state=present
+  with_items: "{{ vector_dep_pkgs }}"
+
+- name: Get the Vector source code
+  git:
+    repo: https://github.com/Netflix/vector.git
+    dest: "{{ vector_root }}"
+    version: "{{ vector_version}}"
+    force: yes
+  become: yes
+  become_user: "{{ vector_user }}"
+
+- name: install npm dependencies
+  npm: name={{ item }} state=present global=yes
+  with_items: "{{ vector_dep_npm }}"
+
+- name: install vector sources npm dependencies
+  npm: path={{ vector_root }} state=present
+  become: yes
+  become_user: "{{ vector_user }}"
+
+- name: install vector source bower dependencies
+  bower: path={{ vector_root }} state=present
+  become: yes
+  become_user: "{{ vector_user }}"
+  ignore_errors: true
+
+- name: build vector with gulp
+  shell: "gulp build > gulp_build.txt chdir={{ vector_root }} creates=gulp_build.txt"
+  become: yes
+  become_user: "{{ vector_user }}"
+

@@ -1,0 +1,33 @@
+---
+
+#- fail: msg="This role is only compatible with Ubuntu"
+#  when: ansible_distribution != 'Ubuntu'
+
+- name: Include version-specific variables for Ubuntu.
+  include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+  when: ansible_distribution == 'Ubuntu'
+- name: Include version-specific variables for RedHat
+  include_vars: "RedHat-{{ ansible_distribution_version.split('.')[0] }}.yml"
+  when: ansible_os_family == "RedHat" or ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+#- name: Include version-specific variables for Alpine
+#  include_vars: "Alpine.yml"
+#  when: ansible_os_family == "Alpine"
+
+#- include: debian.yml
+#  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+#- include: redhat.yml
+#  when: ansible_os_family == "RedHat" or ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: check role user exists
+  user: "name={{ vector_user }} home={{ vector_userdir }}"
+- name: ensure vector userdir is accessible
+  file: "dest={{ vector_userdir }} state=directory mode=0755"
+
+- include: server.yml
+
+- include: source.yml
+  when: vector_origin is defined and vector_origin == 'source'
+- include: archive.yml
+  when: vector_origin is not defined or vector_origin == 'archive'
+

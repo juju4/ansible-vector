@@ -1,0 +1,25 @@
+---
+
+## https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Performance_Tuning_Guide/sect-Red_Hat_Enterprise_Linux-Performance_Tuning_Guide-Performance_Monitoring_Tools-Performance_Co_Pilot_PCP.html
+## http://rhelblog.redhat.com/2015/12/18/getting-started-using-performance-co-pilot-and-vector-for-browser-based-metric-visualizations/
+vector_pkg:
+  - pcp-webapp-vector
+
+## need validation
+vector_dep_pkgs: 
+  - nodejs
+  - nodejs-legacy
+  - git
+  - npm
+
+vector_dep_npm:
+  - bower
+  - gulp
+
+www_user: nginx
+nginx_svc: nginx
+nginx_confdir: /etc/nginx/default.d
+nginx_sitedir: /etc/nginx/conf.d
+nginxdefault: /etc/nginx/conf.d/default.conf
+nginxconf: /etc/nginx/nginx.conf
+

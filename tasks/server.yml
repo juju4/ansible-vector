@@ -1,0 +1,31 @@
+---
+
+- block:
+    - name: install front-end nginx
+      package: name=nginx state=present
+
+    - name: install vector nginx config
+#      template: src=nginx-vector.conf.j2 dest=/etc/nginx/vector.conf mode=0644
+      template: src=nginx-vector.conf.j2 dest={{ nginx_confdir }}/vector.conf mode=0644
+      notify:
+        - restart nginx
+
+  when: vector_server is defined and vector_server == 'nginx'
+
+- block:
+    - name: include vector to default virtualhost
+      lineinfile:
+        dest: "{{ nginx_sitedir }}/default"
+        regexp: "^      include .*/vector.conf;"
+        line: "      include {{ nginx_confdir }}/vector.conf;"
+        insertbefore: '^}'
+      notify:
+        - restart nginx
+
+    - name: ensure default virtualhost is enabled
+      file: src="{{ nginx_sitedir }}/default" dest=/etc/nginx/sites-enabled/default state=link
+      notify:
+        - restart nginx
+
+  when: vector_server is defined and vector_server == 'nginx' and ansible_distribution == 'Ubuntu'
+
