@@ -13,12 +13,6 @@
 #  include_vars: "Alpine.yml"
 #  when: ansible_os_family == "Alpine"
 
-#- include: debian.yml
-#  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-#- include: redhat.yml
-#  when: ansible_os_family == "RedHat" or ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-
 - name: check role user exists
   user: "name={{ vector_user }} home={{ vector_userdir }}"
 - name: ensure vector userdir is accessible
