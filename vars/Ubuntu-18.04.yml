@@ -1,0 +1,20 @@
+---
+
+vector_dep_pkgs: 
+  - nodejs
+#  - nodejs-legacy
+  - git
+  - npm
+
+vector_dep_npm:
+  - bower
+  - gulp
+
+www_user: www-data
+nginx_svc: nginx
+#nginx_confdir: /etc/nginx/conf.d
+nginx_confdir: /etc/nginx
+nginx_sitedir: /etc/nginx/sites-available
+nginxconf: /etc/nginx/nginx.conf
+nginxdefault: /etc/nginx/sites-available/default
+
