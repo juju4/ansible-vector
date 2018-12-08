@@ -28,4 +28,3 @@
         - restart nginx
 
   when: vector_server is defined and vector_server == 'nginx' and ansible_distribution == 'Ubuntu'
-

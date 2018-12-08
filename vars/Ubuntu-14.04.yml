@@ -17,4 +17,3 @@ nginx_confdir: /etc/nginx
 nginx_sitedir: /etc/nginx/sites-available
 nginxconf: /etc/nginx/nginx.conf
 nginxdefault: /etc/nginx/sites-available/default
-

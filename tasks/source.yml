@@ -32,4 +32,3 @@
   shell: "gulp build > gulp_build.txt chdir={{ vector_root }} creates=gulp_build.txt"
   become: yes
   become_user: "{{ vector_user }}"
-

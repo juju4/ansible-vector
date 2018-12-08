@@ -22,4 +22,3 @@ nginx_confdir: /etc/nginx/default.d
 nginx_sitedir: /etc/nginx/conf.d
 nginxdefault: /etc/nginx/conf.d/default.conf
 nginxconf: /etc/nginx/nginx.conf
-

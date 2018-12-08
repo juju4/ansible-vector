@@ -14,5 +14,3 @@
   unarchive:
     src: "{{ vector_root }}/vector.tar.gz"
     dest: "{{ vector_root }}/dist"
-
-
