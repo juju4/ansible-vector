@@ -2,4 +2,3 @@
 
 - name: restart nginx
   service: name={{ nginx_svc }} state=restarted
-

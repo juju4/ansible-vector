@@ -13,4 +13,3 @@ vector_origin: 'archive'
 vector_server: 'nginx'
 #vector_server: 'apache2'
 #vector_server: 'gulp'
-

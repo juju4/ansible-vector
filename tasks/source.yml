@@ -8,7 +8,7 @@
   git:
     repo: https://github.com/Netflix/vector.git
     dest: "{{ vector_root }}"
-    version: "{{ vector_version}}"
+    version: "{{ vector_version }}"
     force: yes
   become: yes
   become_user: "{{ vector_user }}"
@@ -29,6 +29,9 @@
   ignore_errors: true
 
 - name: build vector with gulp
-  shell: "gulp build > gulp_build.txt chdir={{ vector_root }} creates=gulp_build.txt"
+  shell: "gulp build > gulp_build.txt"
+  args:
+    chdir: "{{ vector_root }}"
+    creates: "{{ vector_root }}/gulp_build.txt"
   become: yes
   become_user: "{{ vector_user }}"
