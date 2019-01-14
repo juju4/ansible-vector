@@ -1,4 +1,4 @@
-# {{ ansible_managed }}
+{{ ansible_managed | comment }}
 
      location /vector {
        alias {{ vector_root }}/dist;
