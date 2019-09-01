@@ -21,3 +21,11 @@
   npm: path={{ vector_root }} state=present
   become: yes
   become_user: "{{ vector_user }}"
+
+- name: build vector
+  shell: "npm run build 2>&1 | tee npm_build.txt"
+  args:
+    chdir: "{{ vector_root }}"
+    creates: "{{ vector_root }}/npm_build.txt"
+  become: yes
+  become_user: "{{ vector_user }}"
