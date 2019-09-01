@@ -8,7 +8,6 @@ vector_pkg:
 ## need validation
 vector_dep_pkgs: 
   - nodejs
-  - nodejs-legacy
   - git
   - npm
 
