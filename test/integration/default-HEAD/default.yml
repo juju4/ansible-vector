@@ -2,7 +2,7 @@
 
 - hosts: all
   vars:
-    vector_origin: 'src'
+    vector_origin: 'source'
     vector_version: HEAD
   roles:
     - juju4.vector
