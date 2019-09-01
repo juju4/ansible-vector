@@ -1,0 +1,8 @@
+---
+
+- hosts: all
+  vars:
+    vector_origin: 'src'
+    vector_version: HEAD
+  roles:
+    - juju4.vector
