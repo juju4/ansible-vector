@@ -11,9 +11,7 @@ vector_dep_pkgs:
   - git
   - npm
 
-vector_dep_npm:
-  - bower
-  - gulp
+vector_dep_npm: []
 
 www_user: nginx
 nginx_svc: nginx
