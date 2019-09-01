@@ -21,17 +21,3 @@
   npm: path={{ vector_root }} state=present
   become: yes
   become_user: "{{ vector_user }}"
-
-- name: install vector source bower dependencies
-  bower: path={{ vector_root }} state=present
-  become: yes
-  become_user: "{{ vector_user }}"
-  ignore_errors: true
-
-- name: build vector with gulp
-  shell: "gulp build > gulp_build.txt"
-  args:
-    chdir: "{{ vector_root }}"
-    creates: "{{ vector_root }}/gulp_build.txt"
-  become: yes
-  become_user: "{{ vector_user }}"
